@@ -31,7 +31,10 @@ function cGeneratorFloatingIsland(a_Seed)
 				
 				a_ChunkDesc:SetBiome(x, z, biPlains)
 				
-				local Noise1 = perlin_2d(xx / 20, zz / 20, m_Seed)
+				local Noise0_1 = perlin_2d(xx / 25, zz / 25, m_Seed)
+				local Noise0_2 = perlin_2d(zz / 25, xx / 25, m_Seed)
+				
+				local Noise1 = math.min(Noise0_1, Noise0_2)
 				
 				if (Noise1 > 0) then
 					local Noise2 = perlin_2d(zz / 10, xx / 10, m_Seed) * 25
