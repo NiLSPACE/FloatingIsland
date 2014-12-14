@@ -29,7 +29,7 @@ function cGeneratorFloatingIsland(a_Seed)
 			for z = 0, 15, 1 do
 				local zz = FullZ + z
 				
-				a_ChunkDesc:SetBiome(x, z, biPlains)
+				a_ChunkDesc:SetBiome(x, z, biForest)
 				
 				local Noise0_1 = perlin_2d(xx / 25, zz / 25, m_Seed)
 				
