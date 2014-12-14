@@ -32,6 +32,16 @@ function LoadConfig(a_Path)
 			else
 				LOGWARNING("FloatingIslands: Unknown generator: \"" .. WorldInfo.Generator .. "\"")
 			end
+			
+			local Finishers = StringSplitAndTrim(WorldInfo.AdditionalFinishers or "", ",")
+			WorldInfo.AdditionalFinishers = {}
+			for Idx, Finisher in ipairs(Finishers) do
+				if (Finisher:lower() == "trees") then
+					table.insert(WorldInfo.AdditionalFinishers, cFinisherTrees(Seed))
+				else
+					LOGWARNING("FloatingIslands: Unknown finisher: \"" .. Finisher .. "\"")
+				end
+			end		
 		else
 			LOGWARNING("FloatingIslands: Config configures a non-existing world: \"" .. WorldName .. "\"")
 		end
