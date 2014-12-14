@@ -32,8 +32,9 @@ function cFinisherTrees(a_Seed)
 			for z = MinZ, MaxZ, 1 do
 				local zz = FullZ + z
 				
-				local n = (xx * xx) * (zz * zz) / 57 / 57
-				if (n % 50 == 0) then
+				local n = ((xx * xx) * (zz * zz) / 57 / 57) % 50
+				
+				if (n == 0) then
 					local Height = a_ChunkDesc:GetHeight(x, z)
 					if (Height ~= 0) then
 						local BlockArea = cBlockArea()
