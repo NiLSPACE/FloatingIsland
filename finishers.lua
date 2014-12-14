@@ -12,11 +12,14 @@ function cFinisherTrees(a_Seed)
 	local SizeX = m_TreeImage:GetSizeX()
 	local SizeZ = m_TreeImage:GetSizeZ()
 	
-	local MinX = 0  + math.floor(SizeX / 2)
-	local MaxX = 15 - math.floor(SizeX / 2)
+	local HalfSizeX = math.floor(SizeX / 2)
+	local HalfSizeZ = math.floor(SizeZ / 2)
 	
-	local MinZ = 0  + math.floor(SizeZ / 2)
-	local MaxZ = 15 - math.floor(SizeZ / 2)
+	local MinX = 0  + HalfSizeX
+	local MaxX = 15 - HalfSizeX
+	
+	local MinZ = 0  + HalfSizeZ
+	local MaxZ = 15 - HalfSizeZ
 	
 	local self = {}
 	
@@ -36,17 +39,19 @@ function cFinisherTrees(a_Seed)
 						local BlockArea = cBlockArea()
 						a_ChunkDesc:ReadBlockArea(
 							BlockArea,
-							x - SizeX / 2, x + SizeX / 2,
+							x - HalfSizeX, x + HalfSizeX,
 							Height + 1, Height + m_TreeImage:GetSizeY() + 1,
-							z - SizeZ / 2, z + SizeZ / 2
+							z - HalfSizeZ, z + HalfSizeZ
 						)
 						
 						BlockArea:Merge(m_TreeImage, 0, 0, 0, cBlockArea.msSpongePrint)
-						a_ChunkDesc:WriteBlockArea(BlockArea, x - SizeX / 2, Height + 1, z - SizeX / 2)
+						a_ChunkDesc:WriteBlockArea(BlockArea, x - HalfSizeZ, Height + 1, z - HalfSizeZ)
 					end
 				end
 			end
 		end
+		
+		a_ChunkDesc:UpdateHeightmap()
 	end
 	
 	return self
