@@ -41,7 +41,7 @@ function cGeneratorFloatingIsland(a_Seed)
 					if (Noise1 > 0) then
 						local Noise2 = math.max(Noise0_1, Noise0_2)
 						
-						local MaxHeight = math.ceil(64 + Noise1 * (10 * (Noise1 + 1) ^ 1.5))
+						local MaxHeight = math.ceil(64 + Noise1 * (10 * (Noise1 + 1) ^ 2))
 						local MinHeight = math.floor(55 - Noise2 * 25 + (((0.5 - Noise1) * 10) ^ 2))
 						
 						if (MaxHeight >= MinHeight) then
